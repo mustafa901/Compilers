@@ -1,0 +1,9 @@
+sin(0);
+cos(0);
+tan(0);
+sin(pi / 2);
+cos(pi);
+tan(pi / 4);
+sin(2 * pi);
+cos(2 * pi);
+tan(pi / 3);

@@ -3,7 +3,7 @@
 %{
     #include <iostream>
     #include "calc.tab.hpp"
-    extern int yylex();
+    extern int yylex(); 
 %}
 
 %%
@@ -16,9 +16,20 @@
 "*"                 { return T_MUL; }
 "/"                 { return T_DIV; }
 
-"("                 { return T_LPAREN; }
+"("                 { return T_LPA
+REN; }
 ")"                 { return T_RPAREN; }
 
 ";"                 { return T_SEMI; }
 
+"^"                 { return T_POW; } 
+"|"                 { return T_ABS; } 
+
+"sin"               { return T_SIN; }
+"cos"               { return T_COS; }
+"tan"               { return T_TAN; }
+"pi"                { yylval.num = T_PI; return T_PI; } 
+
 .                   { std::cout << "Invalid character" << std::endl; exit(1);}
+
+%%

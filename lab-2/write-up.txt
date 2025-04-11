@@ -1,0 +1,9 @@
+• Across this lab, what was the most difficult aspect? How did you overcome it?
+An\ I think that trying to work around some of the math logic when it comes to converting it in a language that the 
+program understands seemed to be a more difficult tast than I though but I was able to utilize geeksforgeeks to understand some of the logic conversion.
+
+• We handle negative numbers in our grammar and not in the lexer. Why is this?
+An\ Because the Negative sign is related more to the logic of the application, not in the lexer where the syntax is mainly analyzed.
+
+• In class, we had to define certain operators as “left associative”. What does this mean and why didn’t we have to do it in this lab?
+An\ Left associativity indicates that certain operators appear in sequence, and we have already declared left associativity in the begining of the bison file
