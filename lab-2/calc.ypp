@@ -1,0 +1,58 @@
+%{
+    #include <iostream>
+
+    int yylex();
+    void yyerror(const char *p) { std::cerr << "Error!" << std::endl; }
+
+    extern FILE* yyin;
+%}
+
+%union{
+    double num;
+    char* sym;
+}
+
+%token <num> T_NUM
+%token <sym> T_PLUS T_MINUS T_DIV T_MUL T_LPAREN T_RPAREN T_SEMI
+
+%type <num> stmt expr factor term stmts
+
+%%
+
+stmts   : stmt stmts
+        | stmt
+        ;
+
+stmt    : expr T_SEMI
+        ;
+
+expr    : expr T_PLUS factor
+        | expr T_MINUS factor
+        | factor
+        ;
+
+factor  : factor T_MUL term
+        | factor T_DIV term
+        | term
+        ;
+
+term    : T_LPAREN expr T_RPAREN
+        | T_MINUS T_NUM
+        | T_NUM
+        ;
+
+%%
+
+int main(int argc, char* argv[]){
+    if(argc > 1){
+        yyin = fopen(argv[1], "r");
+    }
+
+    yyparse();
+
+    if(yyin != stdin) {
+        fclose(yyin);
+    }
+    
+    return 0;
+}
